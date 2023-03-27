@@ -35,7 +35,7 @@ export class AuthService {
   getTokens(payload: { userId: string; email: string }) {
     const access_token = this.jwtService.sign(
       { ...payload, sub: payload.userId },
-      { expiresIn: '15m' },
+      { expiresIn: '15s' },
     );
     const refresh_token = this.jwtService.sign(
       { ...payload, sub: payload.userId },
@@ -50,7 +50,7 @@ export class AuthService {
 
   refreshTokens(userId: string, refreshToken: string) {
     const user = this.usersService.findById(userId);
-
+    debugger
     if (!user || !user.refresh_token) {
       throw new ForbiddenException('Access Denied');
     }
