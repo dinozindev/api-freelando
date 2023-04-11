@@ -1,15 +1,23 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { DatabaseService } from 'src/database/database.service';
 import { uuid } from 'uuidv4';
+import { ApiProperty } from '@nestjs/swagger';
 
-export interface User {
+export class User {
   userId: string;
+  @ApiProperty()
   perfil?: 'cliente' | 'freelancer';
+  @ApiProperty()
   interesse?: string;
+  @ApiProperty()
   nome?: string;
+  @ApiProperty()
   uf?: string;
+  @ApiProperty()
   cidade?: string;
+  @ApiProperty()
   email: string;
+  @ApiProperty()
   senha: string;
   refresh_token?: string;
 }
